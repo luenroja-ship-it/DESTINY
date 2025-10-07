@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BEBA GAME</title>
+<link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="sounds/background.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="ghost-sound"><source src="sounds/ghost.mp3" type="audio/mpeg"></audio>
+    <audio id="witch-laugh"><source src="sounds/witch-laugh.mp3" type="audio/mpeg"></audio>
+
+    <div id="start-screen" class="screen active">
+        <h1 class="title">🎃 DESCUBRE TU PRÓXIMO DESTINO 🎃</h1>
+        <input type="text" id="username" placeholder="Ingresa tu nombre" />
+        <button id="start-btn">Comenzar</button>
+        <div class="sky">
+            <div class="moon"></div>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+        </div>
+    </div>
+
+    <div id="question-screen" class="screen">
+        <div class="sky">
+            <div class="moon"></div>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+        </div>
+        <h2 id="greeting"></h2>
+        <div id="lives"></div>
+        <div id="question-container">
+            <p id="question-text"></p>
+            <div id="options"></div>
+        </div>
+    </div>
+
+    <div id="result-screen" class="screen">
+        <h2 id="result-message"></h2>
+        <button id="restart-btn">Volver a jugar</button>
+    </div>
+
+<script src="script.js"></script>
+</body>
+</html>
