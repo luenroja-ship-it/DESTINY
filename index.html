@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BEBA GAME</title>
+<title>BEBA GAME Halloween</title>
 <link href="https://fonts.googleapis.com/css2?family=Creepster&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -14,22 +14,28 @@
     <audio id="ghost-sound"><source src="sounds/ghost.mp3" type="audio/mpeg"></audio>
     <audio id="witch-laugh"><source src="sounds/witch-laugh.mp3" type="audio/mpeg"></audio>
 
+    <!-- Pantalla Inicial -->
     <div id="start-screen" class="screen active">
-        <h1 class="title">🎃 DESCUBRE TU PRÓXIMO DESTINO 🎃</h1>
-        <input type="text" id="username" placeholder="Ingresa tu nombre" />
-        <button id="start-btn">Comenzar</button>
         <div class="sky">
             <div class="moon"></div>
             <div class="cloud cloud1"></div>
             <div class="cloud cloud2"></div>
+            <div class="witch-fly fly1">🧙‍♀️</div>
+            <div class="witch-fly fly2">🧙‍♀️</div>
         </div>
+        <h1 class="title">🎃 DESCUBRE TU PRÓXIMO DESTINO 🎃</h1>
+        <input type="text" id="username" placeholder="Ingresa tu nombre" />
+        <button id="start-btn">Comenzar</button>
     </div>
 
+    <!-- Pantalla Preguntas -->
     <div id="question-screen" class="screen">
         <div class="sky">
             <div class="moon"></div>
             <div class="cloud cloud1"></div>
             <div class="cloud cloud2"></div>
+            <div class="witch-fly fly1">🧙‍♀️</div>
+            <div class="witch-fly fly2">🧙‍♀️</div>
         </div>
         <h2 id="greeting"></h2>
         <div id="lives"></div>
@@ -39,6 +45,7 @@
         </div>
     </div>
 
+    <!-- Pantalla Resultado -->
     <div id="result-screen" class="screen">
         <h2 id="result-message"></h2>
         <button id="restart-btn">Volver a jugar</button>

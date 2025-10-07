@@ -11,6 +11,7 @@ const ghostSound = document.getElementById('ghost-sound');
 let currentQuestion = 0;
 let lives = 3;
 let username = '';
+
 const questions = [
     { q: '¿Cuándo nos hicimos novios?', options: ['16/01/22', '16/01/23', '15/01/22'], answer: 0 },
     { q: '¿Cómo se llamaba el lugar donde nos conocimos?', options: ['Eterno', 'Xtasis', 'Xcso'], answer: 1 },
@@ -18,7 +19,7 @@ const questions = [
     { q: '¿Qué vestida nos presentó?', options: ['Isaí', 'Lady Gaga', 'Alexis'], answer: 2 },
     { q: '¿Cuál fue la primera ciudad a la que fuimos de viaje?', options: ['Sayulita', 'Guanajuato', 'CDMX'], answer: 1 },
     { q: '¿Cuántos años cumplimos de novios en enero 2026?', options: ['4', '5', '3'], answer: 0 },
-    { q: '¿Cuál era nuestra actividad principal cuando nos conocimos?', options: ['Salir a correr', 'Ir a comer pozole', 'Salir a caminar'], answer: 2 },
+    { q: '¿Cuál era nuestra actividad principal cuando nos conocimos?', options: ['salir a correr', 'ir a comer pozole', 'salir a caminar'], answer: 2 },
     { q: '¿Quién le envió el primer mensaje al otro?', options: ['Andrés', 'Enrique'], answer: 0 },
     { q: '¿Cuál fue la primera playa que conocimos juntos?', options: ['PV', 'Playa del Carmen', 'Sayulita'], answer: 2 },
     { q: '¿Quién dijo primero te amo?', options: ['Andrés', 'Enrique'], answer: 0 }
@@ -35,56 +36,46 @@ startBtn.addEventListener('click', () => {
 });
 
 function showQuestion() {
-    if (currentQuestion >= questions.length) {
-        showResult();
-        return;
-    }
+    if(currentQuestion >= questions.length) { return showResult(); }
+
     const q = questions[currentQuestion];
     questionText.textContent = q.q;
     optionsContainer.innerHTML = '';
-    const classes = ['zombie', 'witch', 'vampire'];
-    q.options.forEach((opt, i) => {
+
+    const classes = ['zombie','witch','vampire'];
+    q.options.forEach((opt,i)=>{
         const btn = document.createElement('button');
         btn.textContent = opt;
-        btn.classList.add('option-btn', classes[i % 3]);
-        btn.onclick = () => checkAnswer(i);
+        btn.classList.add('option-btn', classes[i%3]);
+        btn.onclick = ()=>checkAnswer(i);
         optionsContainer.appendChild(btn);
     });
     renderLives();
 }
 
-function checkAnswer(selected) {
+function checkAnswer(selected){
     const correct = questions[currentQuestion].answer;
-    if (selected === correct) {
-        witchLaugh.play();
-    } else {
-        ghostSound.play();
-        lives--;
-        if (lives <= 0) return restartGame();
-    }
+    if(selected===correct){ witchLaugh.play(); } 
+    else { ghostSound.play(); lives--; if(lives<=0) return restartGame(); }
     currentQuestion++;
     showQuestion();
 }
 
-function renderLives() {
+function renderLives(){
     livesContainer.innerHTML = '';
-    for (let i = 0; i < lives; i++) {
-        const img = document.createElement('img');
-        img.src = 'images/witch.png';
-        livesContainer.appendChild(img);
-    }
+    for(let i=0;i<lives;i++){ livesContainer.innerHTML += '🧙‍♀️ '; }
 }
 
-function showResult() {
+function showResult(){
     document.getElementById('question-screen').classList.remove('active');
     document.getElementById('result-screen').classList.add('active');
     document.getElementById('result-message').innerHTML = '🧙‍♀️ PLAYA DEL CARMEN<br>del 17 al 24 de marzo del 2026<br>✈️ 🏨';
 }
 
-document.getElementById('restart-btn').addEventListener('click', restartGame);
-function restartGame() {
-    lives = 3;
-    currentQuestion = 0;
+document.getElementById('restart-btn').addEventListener('click',restartGame);
+function restartGame(){
+    lives=3;
+    currentQuestion=0;
     document.getElementById('result-screen').classList.remove('active');
     document.getElementById('start-screen').classList.add('active');
 }
